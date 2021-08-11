@@ -45,7 +45,7 @@ class Sort {
 
 
     ///Fill the sub-arrays with the appriate values based on the indices
-    for (let index = 0; index < subArrayASize; index += 1) {
+    for (let index = 0; index < endIndex; index += 1) {
       subArrayA.push(A[startIndex + index]);
     }
 
@@ -53,7 +53,6 @@ class Sort {
       subArrayB.push(A[middleIndex + index + 1]);
     }
 
-    const T =[];
     for (mainArrayIndex; mainArrayIndex < endIndex+1; mainArrayIndex += 1) {
       if (subArrayAIndex >= subArrayASize || subArrayBIndex >= subArrayBSize){
         subArrayAIndex < subArrayASize ? A[mainArrayIndex] = subArrayA[subArrayAIndex] : A[mainArrayIndex]=subArrayB[subArrayBIndex];
@@ -75,13 +74,13 @@ class Sort {
     }
   }
   
-  mergeSort(A, p, r) {
-    if (p < r) {
-      const q = Math.floor((p + r) / 2);
+  mergeSort(A, startIndex, endIndex) {
+    if (startIndex < endIndex) {
+      const middleIndex = Math.floor((startIndex + endIndex) / 2);
 
-      this.mergeSort(A, p, q);
-      this.mergeSort(A, q + 1, r);
-      this.merge(A, p, q, r);
+      this.mergeSort(A, startIndex, middleIndex);
+      this.mergeSort(A, middleIndex + 1, endIndex);
+      this.merge(A, startIndex, middleIndex, endIndex);
     }
   }
 }
