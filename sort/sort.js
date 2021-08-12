@@ -1,10 +1,9 @@
 class Sort {
   constructor() {
     this.data = [];
-    this.t =0;
 
     //populates the sample array with random data
-    for (let index = 0; index < 105; index++) {
+    for (let index = 0; index < 25; index++) {
       this.data.push(Math.floor((Math.random() * 100) + 1));
     }
   }
@@ -12,7 +11,7 @@ class Sort {
   /**
    * This method performs an insertion sort on the provided array.
    * Input:
-   *      inputArr
+   *      None
    * Output:
    *      None
    */
@@ -26,7 +25,7 @@ class Sort {
 
       /*Chek through the array to see if all previous elements are greater than the curent lement [key] */
       while (i > -1 && this.data[i] > key) {
-        his.data[i + 1] = this.data[i];
+        this.data[i + 1] = this.data[i];
         i -= 1;
       }
       /*Insert the element at the appropriate position within the array */
@@ -34,6 +33,15 @@ class Sort {
     }
   }
 
+  /**
+   * This function merge the subarrays
+   * O(N)
+   * 
+   * @param {*} A - Main array  
+   * @param {*} startIndex - start index of the first array
+   * @param {*} middleIndex - middle index of the main array
+   * @param {*} endIndex - last index of the array
+   */
   merge (A, startIndex, middleIndex, endIndex) {
     const subArrayASize = middleIndex - startIndex + 1;
     const subArrayBSize = endIndex - middleIndex;
@@ -74,6 +82,15 @@ class Sort {
     }
   }
   
+  /**
+   * A recursive function for sorting the array. 
+   * It makes use of the above mentioned merge function.
+   * O(N log N)
+   * 
+   * @param {*} A 
+   * @param {*} startIndex 
+   * @param {*} endIndex 
+   */
   mergeSort(A, startIndex, endIndex) {
     if (startIndex < endIndex) {
       const middleIndex = Math.floor((startIndex + endIndex) / 2);
@@ -83,6 +100,22 @@ class Sort {
       this.merge(A, startIndex, middleIndex, endIndex);
     }
   }
-}
 
-const sort = new Sort();
+  /**
+   * This function selection method approach to sort the elements in an ascending order
+   * O(N^2)
+   */
+  selction() {
+    const n  = this.data.length;
+    
+    for (let i = 0; i < n; i += 1) {
+      let min= this.data[i];
+      for (let j = i; j < n; j += 1) {
+        if (this.data[j] < min){
+          min = this.data[j];
+          [this.data[i], this.data[j]] = [this.data[j], this.data[i]]; //swap the values
+        }
+      }
+    }
+  }
+}
