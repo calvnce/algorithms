@@ -2,6 +2,9 @@ package com.algorithms.linkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.algorithms.linkedlist.singly.Node;
+import com.algorithms.linkedlist.singly.SinglyLinkedList;
+
 import org.junit.jupiter.api.Test;
 
 public class SinglyLinkedListTest {
