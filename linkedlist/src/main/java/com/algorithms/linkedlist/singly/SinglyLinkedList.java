@@ -1,4 +1,4 @@
-package com.algorithms.linkedlist;
+package com.algorithms.linkedlist.singly;
 
 public class SinglyLinkedList {
   private Node head;

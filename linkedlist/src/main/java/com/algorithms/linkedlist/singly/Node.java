@@ -1,4 +1,6 @@
-package com.algorithms.linkedlist;
+package com.algorithms.linkedlist.singly;
+
+import com.algorithms.linkedlist.Data;
 
 /**
  * This is the representation of the List structure. It contains the simple
