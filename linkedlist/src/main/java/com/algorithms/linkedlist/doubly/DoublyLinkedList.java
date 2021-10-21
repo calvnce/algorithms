@@ -84,13 +84,13 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     if (this.head == null)
       this.head = this.tail = newNode;
     else {
-      // Set the new node's previous to null
+       // Set the current head's previous pointer to be the new node.
       this.head.setPrev(newNode);
       // Set the newNode's NEXT pointer to point at the current head
       newNode.setNext(this.head);
-      // Set the current head's previous pointer to be the new node.
-      this.head = newNode;
       // Set the new node to be the new head
+      this.head = newNode;
+      // Set the new node's previous to null
       newNode.setPrev(null);
     }
   }
@@ -102,13 +102,13 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
     if (this.tail == null)
       this.head = this.tail = newNode;
     else {
-      // Set the new node's next pointer to be null
+      // Set the current tail's next pointer to be the new node
       this.tail.setNext(newNode);
       // Set the new node's previous pointer to point at the current tail
       newNode.setPrev(this.tail);
-      // Set the current tail's next pointer to be the new node
-      this.tail = newNode;
       // Set the new node to be the new tail
+      this.tail = newNode;
+      // Set the new node's next pointer to be null
       newNode.setNext(null);
     }
   }
