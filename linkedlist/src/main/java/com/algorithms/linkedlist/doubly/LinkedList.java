@@ -13,8 +13,6 @@ public interface LinkedList<T> {
 
   Node<T> remove(int index);
 
-  Node<T> remove(Node<T> node);
-
   Node<T> getNodeByIndex(int index);
 
   int getNodeIndex(T data);

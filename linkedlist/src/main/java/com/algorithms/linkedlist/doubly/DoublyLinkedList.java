@@ -144,28 +144,71 @@ public class DoublyLinkedList<T> implements LinkedList<T> {
       newNode.getNext().setPrev(newNode);
     }
   }
-
+ 
+  /**
+   * This method removes the node at the end(tail) of the list. 
+   * Returns the removed node, otherwise return null if list is empty
+   * 
+   * @return Node | null
+   */
   @Override
   public Node<T> pop() {
-    // TODO Auto-generated method stub
+    if(this.tail!=null){
+      //Hold the current tail
+      Node<T>currentTail = this.tail;
+      this.setTail(this.tail.getPrev());
+      this.tail.setNext(null);
+      return currentTail;
+    }
     return null;
   }
 
+  /**
+   * This method removes the node at the begining of the list. 
+   * It returns the removed node or null if the list is empty
+   * 
+   * @return Node | null
+   */
   @Override
   public Node<T> remove() {
-    // TODO Auto-generated method stub
+    if (this.head != null) {
+      // Hold the current tail
+      Node<T> currentHead = this.head;
+      this.setHead(this.head.getNext());
+      this.head.setPrev(null);
+      return currentHead;
+    }
     return null;
   }
-
+/**
+ * This method removes the node at a specified index. 
+ * Returns The removed Node, otherwise return null if the list is empty
+ */
   @Override
   public Node<T> remove(int index) {
-    // TODO Auto-generated method stub
-    return null;
-  }
+    if (this.head != null) {
+      // Get the possible maximum index
+      int maxIndex = this.size();
 
-  @Override
-  public Node<T> remove(Node<T> node) {
-    // TODO Auto-generated method stub
+      // Throw an exception if the provided index is out of range
+      if (index < 0 || index > maxIndex)
+        throw new IndexOutOfBoundsException();
+
+      if(index==0)
+        // Remove at the top if index points at the first node of the list
+        this.remove();
+      else if(index==maxIndex -1)
+        // Remove at the end if index points at the last node of the list
+        this.pop(); 
+      else {
+        //Get the node at the provided index
+        Node<T> currentNode = this.getNodeByIndex(index);
+        //Hold the node to be removed
+        Node<T> nodeToRemove = currentNode;
+        currentNode.getPrev().setNext(nodeToRemove.getNext());
+        return nodeToRemove;
+      }
+    }
     return null;
   }
 

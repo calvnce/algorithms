@@ -1,6 +1,8 @@
 package com.algorithms.linkedlist.doubly;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.algorithms.linkedlist.Data;
 
@@ -101,26 +103,53 @@ public class DoublyLinkedListTest {
 
   @Test
   void testIsEmpty() {
+    LinkedList<Data> list = new DoublyLinkedList<>();
 
+    assertTrue(list.isEmpty());
+
+    list.insert(0, data[0]);
+    list.insert(0, data[1]);
+    list.insert(1, data[2]);
+    list.insert(2, data[3]);
+
+    assertFalse(list.isEmpty());
   }
 
   @Test
   void testPop() {
-
+    LinkedList<Data> list = new DoublyLinkedList<>();
+    list.add(data[0]);
+    list.add(data[1]);
+    list.add(data[2]);
+    list.add(data[3]);
+    assertEquals(data[0], list.pop().getData());
+    assertEquals(data[1], list.getTail().getData());
+    assertEquals(3, list.size());
   }
 
   @Test
   void testRemove() {
-
+    LinkedList<Data> list = new DoublyLinkedList<>();
+    list.add(data[0]);
+    list.add(data[1]);
+    list.add(data[2]);
+    list.add(data[3]);
+    assertEquals(data[3], list.remove().getData());
+    assertEquals(data[2], list.getHead().getData());
+    assertEquals(3, list.size());
   }
 
   @Test
-  void testRemove2() {
-
-  }
-
-  @Test
-  void testRemove3() {
-
+  void testRemoveByIndex() {
+    LinkedList<Data> list = new DoublyLinkedList<>();
+    list.add(data[0]);
+    list.add(data[1]);
+    list.add(data[2]);
+    list.add(data[3]);
+    assertEquals(data[2], list.remove(1).getData());
+    assertEquals(0, list.getNodeIndex(data[3]));
+    assertEquals(1, list.getNodeIndex(data[1]));
+    assertEquals(data[0], list.getTail().getData());
+    assertEquals(3, list.size());
   }
 }
